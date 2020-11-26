@@ -42,8 +42,7 @@ for page in gallery.pages:
 ```
 
 ## Documentation
-Documentation can be found at <https://nhentaio.readthedocs.io/>.
-At present there's no examples directory, but the documentation should be easy enough to follow.
+Documentation can be found at <https://nhentaio.readthedocs.io/latest>.
 
 ## What do you mean "API"?
 Nhentai technically doesn't have a public front-facing API for other services to use.
