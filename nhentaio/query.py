@@ -16,6 +16,7 @@ Weeks = lambda n: _TimeUnit(n, "w")
 Months = lambda n: _TimeUnit(n, "m")
 Years = lambda n: _TimeUnit(n, "y")
 
+# RTD autodoc bandaid
 Hours.__doc__ = """Represents ``n`` hours. Used in :meth:`~.Query.uploaded`."""
 Days.__doc__ = """Represents ``n`` days. Used in :meth:`~.Query.uploaded`."""
 Weeks.__doc__ = """Represents ``n`` weeks. Used in :meth:`~.Query.uploaded`."""
@@ -60,6 +61,8 @@ class Query:
 
     def parodies(self, *args):
         """Limits search results to specific parodies.
+
+        This function returns the class instance to allow for fluent-style chaining.
 
         Parameters
         -----------

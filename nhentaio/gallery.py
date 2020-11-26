@@ -43,7 +43,7 @@ class GalleryPage:
     """GalleryPage()
     
     Represents a page from a gallery.
-    This class is returned from `attr`:~.Gallery.pages: and should not be instantiated manually.
+    This class is returned from :attr:`~.Gallery.pages` and should not be instantiated manually.
 
     Attributes
     -----------

@@ -1,3 +1,5 @@
+import re
+
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -22,8 +24,11 @@ project = 'nhentaio'
 copyright = '2020, Kaylynn'
 author = 'Kaylynn'
 
+
 # The full version, including alpha/beta/rc tags
-release = '0.1.0'
+with open("../../nhentaio/__init__.py") as f:
+    release = re.search(r'__version__ = "([\d\.]+)"', f.read(), re.MULTILINE)[1]
+
 
 master_doc = 'index'
 

@@ -1,8 +1,21 @@
 import asyncio
 
+from inspect import isawaitable
+
 
 class NoMoreItems(Exception):
     pass
+
+
+def _identity(value):
+    return value
+
+
+async def _maybe_coroutine(func, *args, **kwargs):
+    if isawaitable(func):
+        return await func(*args, **kwargs)
+
+    return func(*args, **kwargs)
 
 
 class _AsyncIterator:
@@ -35,6 +48,35 @@ class _AsyncIterator:
             raise StopAsyncIteration()
         else:
             return next
+
+
+class _MappedAsyncIterator(_AsyncIterator):
+    def __init__(self, iterator, func) -> None:
+        self.iterator = iterator
+        self.func = func
+
+    async def next(self):
+        item = await self.iterator.next()
+        return await _maybe_coroutine(self.func, item)
+
+
+class _FilteredAsyncIterator(_AsyncIterator):
+    def __init__(self, iterator, func) -> None:
+        self.iterator = iterator
+        if func is None:
+            func = _identity
+
+        self.func = func
+
+    async def next(self):
+        getter = self.iterator.next
+        func = self.func
+
+        while True:
+            item = await getter()
+            result = await _maybe_coroutine(func, item)
+            if result:
+                return result
 
 
 class _LazyCoroIterator(_AsyncIterator):

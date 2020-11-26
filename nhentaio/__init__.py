@@ -13,11 +13,12 @@ __title__ = "nhentaio"
 __author__ = "Kaylynn"
 __license__ = "MIT"
 __copyright__ = "Copyright 2020 Kaylynn"
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from .client import Client
 from .enums import SortType
 from .errors import *
 from .gallery import Gallery, GalleryPage, PartialGallery
+from .iterators import NoMoreItems
 from .query import Hours, Days, Weeks, Months, Years, Query
 

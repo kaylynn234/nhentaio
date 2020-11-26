@@ -8,16 +8,19 @@ from dateutil import parser
 from lxml import html
 
 from .asset import Asset
-from .errors import NhentaiError
+from .errors import NhentaiError, NotFound
 from .gallery import Gallery, GalleryPage, PartialGallery
 from .taglike import Taglike
 
 
-NHENTAI_ID_PATTERN = re.compile(r"/g/(\d*)/")
 NHENTAI_ACTUAL_ID_PATTERN = re.compile(r'data-src="https://t\.nhentai\.net/galleries/(\d+)/\w+\.jpg"')
+NHENTAI_ID_PATTERN = re.compile(r"/g/(\d*)/")
+NHENTAI_RESULT_COUNT_PATTERN = re.compile(r'\s*(\d+)\s*results')
+
 TITLE_PREFIX = "/html/body/div[2]/div[1]/div[2]/div"
 
 GalleryTags = namedtuple("GalleryTags", "tags pages date")
+RawSearchResults = namedtuple("RawSearchResults", "total results")
 
 
 class HTTPClient:
@@ -123,6 +126,12 @@ class HTTPClient:
         }
 
         search_result = await self.route("https://nhentai.net/search", request_parameters)
+        result_count = re.search(NHENTAI_RESULT_COUNT_PATTERN, search_result)[1]
+
+        # don't bother parsing; there are no results
+        if not int(result_count):
+            raise NotFound("No results found!")
+
         return await self.galleries_from(search_result, limit=limit)
 
     async def close(self):

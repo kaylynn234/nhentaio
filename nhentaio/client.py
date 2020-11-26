@@ -43,7 +43,7 @@ class Client:
 
         Returns
         --------
-        AsyncIterator[:class:`~.PartialGallery`]
+        :class:`~.AsyncIterator`
             An asynchronous iterator yielding the results that were found.
         """
 
@@ -102,7 +102,7 @@ class Client:
 
         Returns
         --------
-        AsyncIterator[:class:`~.Gallery`]
+        :class:`~.AsyncIterator`
             An asynchronous iterator yielding the galleries that were found.
         """
 

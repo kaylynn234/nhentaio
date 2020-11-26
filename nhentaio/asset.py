@@ -22,7 +22,7 @@ class Asset:
         Returns
         --------
         :class:`bytes`
-            the bytes that were read.
+            The bytes that were read.
         """
 
         if not hasattr(self, "_cached_bytes"):
