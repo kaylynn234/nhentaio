@@ -1,10 +1,10 @@
 import asyncio
-from nhentaio.gallery import Gallery, PartialGallery
 import re
 import math
 
-from nhentaio.enums import SortType
-from nhentaio.iterators import ChunkedCoroIterator, CoroIterator
+from .enums import SortType
+from .gallery import Gallery, PartialGallery
+from .iterators import ChunkedCoroIterator, CoroIterator
 
 
 class Client:

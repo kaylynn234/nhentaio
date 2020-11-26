@@ -3,7 +3,7 @@ import typing
 
 from typing import Any, Union, TypeVar
 
-from nhentaio.gallery import Gallery, PartialGallery
+from .gallery import Gallery, PartialGallery
 
 
 class NoMoreItems(Exception):

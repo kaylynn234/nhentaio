@@ -2,7 +2,7 @@ import dataclasses
 
 from typing import IO, Union
 
-from nhentaio.http import HTTPClient
+from .http import HTTPClient
 
 
 @dataclasses.dataclass

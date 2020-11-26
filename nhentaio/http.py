@@ -7,10 +7,10 @@ import aiohttp
 from dateutil import parser
 from lxml import html
 
-from nhentaio.asset import Asset
-from nhentaio.errors import NhentaiError
-from nhentaio.gallery import Gallery, GalleryPage, PartialGallery
-from nhentaio.taglike import Taglike
+from .asset import Asset
+from .errors import NhentaiError
+from .gallery import Gallery, GalleryPage, PartialGallery
+from .taglike import Taglike
 
 
 NHENTAI_ID_PATTERN = re.compile(r"/g/(\d*)/")

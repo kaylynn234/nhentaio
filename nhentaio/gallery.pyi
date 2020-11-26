@@ -3,10 +3,9 @@ import datetime
 
 from typing import List
 
-from nhentaio.asset import Asset
-from nhentaio.http import HTTPClient
-from nhentaio.iterators import GallerySearchIterator
-from nhentaio.taglike import Taglike
+from .asset import Asset
+from .http import HTTPClient
+from .taglike import Taglike
 
 
 @dataclasses.dataclass

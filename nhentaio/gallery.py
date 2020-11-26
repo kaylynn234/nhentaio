@@ -3,8 +3,8 @@ import datetime
 
 from typing import List
 
-from nhentaio.asset import Asset
-from nhentaio.taglike import Taglike
+from .asset import Asset
+from .taglike import Taglike
 
 
 @dataclasses.dataclass

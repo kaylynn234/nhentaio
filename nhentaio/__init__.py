@@ -15,9 +15,9 @@ __license__ = "MIT"
 __copyright__ = "Copyright 2020 Kaylynn"
 __version__ = "0.1.0"
 
-from nhentaio.client import Client
-from nhentaio.enums import SortType
-from nhentaio.errors import *
-from nhentaio.gallery import Gallery, PartialGallery
-from nhentaio.query import Hours, Days, Weeks, Months, Years, Query
+from .client import Client
+from .enums import SortType
+from .errors import *
+from .gallery import Gallery, PartialGallery
+from .query import Hours, Days, Weeks, Months, Years, Query
 

@@ -2,9 +2,9 @@ import asyncio
 import re
 import math
 
-from nhentaio.enums import SortType
-from nhentaio.http import HTTPClient
-from nhentaio.iterators import ChunkedCoroIterator, CoroIterator
+from .enums import SortType
+from .http import HTTPClient
+from .iterators import ChunkedCoroIterator, CoroIterator
 
 
 GALLERY_ID_PATTERN = re.compile(r'<h3 id="gallery_id"><span class="hash">#</span>(\d*)</h3>')

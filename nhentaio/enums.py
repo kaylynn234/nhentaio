@@ -1,4 +1,4 @@
-from nhentaio.better_enums import EnumMeta
+from .better_enums import EnumMeta
 
 
 class SortType(metaclass=EnumMeta):
