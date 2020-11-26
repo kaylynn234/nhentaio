@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "nhentaio"
+version = "0.1.0"
+description = "An asynchronous python library for interacting with nhentai."
+authors = ["Kaylynn <mkaylynn7@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7" 
+aiohttp = "^3.7.3"
+lxml = "^4.6.1"
+python-dateutil = "^2.8.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

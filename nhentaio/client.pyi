@@ -1,0 +1,19 @@
+import asyncio
+from nhentaio.gallery import Gallery, PartialGallery
+import re
+import math
+
+from nhentaio.enums import SortType
+from nhentaio.iterators import ChunkedCoroIterator, CoroIterator
+
+
+class Client:
+    """Represents a client that can be used to interact with nhentai."""
+
+    def __init__(self) -> None: ...
+
+    def search(self, query, *, limit=25, sort_by = SortType.recent) -> ChunkedCoroIterator[PartialGallery]: ...
+    async def fetch_gallery(self, id) -> Gallery: ...
+    async def random_gallery(self): ...
+    def fetch_galleries(self, *args) -> CoroIterator[Gallery]: ...
+    def close(self) -> None: ...
