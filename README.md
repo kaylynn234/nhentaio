@@ -24,7 +24,7 @@ If you're managing your project with Poetry, you can use the following:
 poetry add nhentaio
 ```
 
-Do note that nhentaio requires recent-ish versions of `aiohttp`, `python-dateuti` and `lxml` to be installed. More information can be found in `requirements.txt` or `pyproject.toml`. Using Poetry has the advantage of managing venvs and dependencies for you.
+Do note that nhentaio requires recent-ish versions of `aiohttp`, `python-dateutil` and `lxml` to be installed. More information can be found in `requirements.txt` or `pyproject.toml`. Using Poetry has the advantage of managing venvs and dependencies for you.
 
 Nhentaio requires Python 3.7 or later.
 
