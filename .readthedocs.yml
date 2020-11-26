@@ -10,7 +10,7 @@ sphinx:
   builder: html
 
 python:
-  version: 3.7
+  version: 3.9
   install:
     - requirements: docs/requirements.txt
     - requirements: requirements.txt
