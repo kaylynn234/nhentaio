@@ -3,7 +3,9 @@ import dataclasses
 
 @dataclasses.dataclass
 class Taglike:
-    """Represents an nhentai tag.
+    """Taglike()
+
+    Represents an nhentai tag.
     This class should not be instantiated manually.
 
     Attributes

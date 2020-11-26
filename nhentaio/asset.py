@@ -3,7 +3,9 @@ import dataclasses
 
 @dataclasses.dataclass
 class Asset:
-    """Represents an image from nhentai, such as a user's avatar or a gallery page.
+    """Asset()
+
+    Represents an image from nhentai, such as a user's avatar or a gallery page.
 
     Attributes
     -----------
@@ -20,6 +22,7 @@ class Asset:
         Returns
         --------
         :class:`bytes`
+            the bytes that were read.
         """
 
         if not hasattr(self, "_cached_bytes"):

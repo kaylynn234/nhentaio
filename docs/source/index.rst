@@ -6,14 +6,17 @@
 Welcome to nhentaio's documentation!
 ====================================
 
+Nhentaio is an asynchronous, read-only nhentai API wrapper for the damned, depraved, and disillusioned.
+
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 4
+
+   reference
 
 
 
-Indices and tables
-==================
+If you're lost, try the following:
 
 * :ref:`genindex`
 * :ref:`modindex`

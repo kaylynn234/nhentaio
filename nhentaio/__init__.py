@@ -18,6 +18,6 @@ __version__ = "0.1.0"
 from .client import Client
 from .enums import SortType
 from .errors import *
-from .gallery import Gallery, PartialGallery
+from .gallery import Gallery, GalleryPage, PartialGallery
 from .query import Hours, Days, Weeks, Months, Years, Query
 

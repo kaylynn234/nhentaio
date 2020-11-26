@@ -9,7 +9,9 @@ from .taglike import Taglike
 
 @dataclasses.dataclass
 class PartialGallery:
-    """Represents a partial gallery.
+    """PartialGallery()
+
+    Represents a partial gallery.
 
     .. note::
 
@@ -38,7 +40,9 @@ class PartialGallery:
 
 @dataclasses.dataclass
 class GalleryPage:
-    """Represents a page from a gallery.
+    """GalleryPage()
+    
+    Represents a page from a gallery.
     This class is returned from `attr`:~.Gallery.pages: and should not be instantiated manually.
 
     Attributes
@@ -60,7 +64,9 @@ class GalleryPage:
 
 @dataclasses.dataclass
 class Gallery:
-    """Represents an nhentai gallery.
+    """Gallery()
+
+    Represents an nhentai gallery.
     This class is returned from :meth:`~.Client.fetch_gallery` / :meth:`~.Client.fetch_galleries` and should not be instantiated manually.
 
     Attributes

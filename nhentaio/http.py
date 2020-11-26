@@ -14,7 +14,6 @@ from .taglike import Taglike
 
 
 NHENTAI_ID_PATTERN = re.compile(r"/g/(\d*)/")
-# data-src="https://t.nhentai.net/galleries/1332283/thumb.jpg"
 NHENTAI_ACTUAL_ID_PATTERN = re.compile(r'data-src="https://t\.nhentai\.net/galleries/(\d+)/\w+\.jpg"')
 TITLE_PREFIX = "/html/body/div[2]/div[1]/div[2]/div"
 

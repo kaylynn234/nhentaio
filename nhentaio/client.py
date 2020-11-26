@@ -3,6 +3,7 @@ import re
 import math
 
 from .enums import SortType
+from .errors import NhentaiError
 from .http import HTTPClient
 from .iterators import ChunkedCoroIterator, CoroIterator
 
@@ -22,28 +23,28 @@ class Client:
 
         .. note::
 
-            Results from searches are of type :class:`nhentaio.PartialGallery`, as opposed to :class:`nhentaio.Gallery`, and have less information available.
-            To get full information about a gallery, including pages and tags, use `meth`:~.Client.fetch_gallery: or `meth`:~.Client.fetch_galleries:.
+            Results from searches are of type :class:`~.PartialGallery`, as opposed to :class:`~.Gallery`, and have less information available.
+            To get full information about a gallery, including pages and tags, use :meth:`~Client.fetch_gallery`: or :meth:`~.Client.fetch_galleries`.
 
         Parameters
         -----------
-        query: Union[:class:`str`, :class:`nhentaio.Taglike`, :class:`nhentaio.Query`]
+        query: Union[:class:`str`, :class:`~.Taglike`, :class:`~.Query`]
             The query to use when searching. For ease of use this parameter is implicitly cast to :class:`str` for you.
 
             .. note::
 
-                For building complex search queries, consider using :class:`nhentaio.Query`.
+                For building complex search queries, consider using :class:`~.Query`.
 
         limit: :class:`int`
             The maximum amount of galleries to return. Defaults to 25.
 
-        sort_by: :class:`nhentaio.SortType`
+        sort_by: :class:`~.SortType`
             The method by which results should be sorted. Defaults to `SortType.recent`.
 
         Returns
         --------
-            AsyncIterator[:class:`nhentaio.PartialGallery`]
-                An asynchronous iterator yielding the results that were found.
+        AsyncIterator[:class:`~.PartialGallery`]
+            An asynchronous iterator yielding the results that were found.
         """
 
         max_pages = math.ceil(limit / 25)
@@ -57,17 +58,22 @@ class Client:
     async def fetch_gallery(self, id):
         """Fetches a gallery from nhentai with the specified ID.
 
+        Parameters
+        -----------
         id: :class:`int`
             The ID of the gallery to fetch.
 
         Returns
         --------
-        Optional[:class:`nhentaio.Gallery`]
+        Optional[:class:`~.Gallery`]
             The gallery with the passed ID, or ``None`` if not found.
         """
 
         response = await self._state.route(f"https://nhentai.net/g/{id}", {})
-        return await self._state.gallery_from(response, id)
+        try:
+            return await self._state.gallery_from(response, id)
+        except NhentaiError:
+            return None
 
     async def random_gallery(self):
         """Fetches a random gallery from nhentai.
@@ -78,7 +84,7 @@ class Client:
 
         Returns
         --------
-        :class:`nhentaio.Gallery`
+        :class:`~.Gallery`
             The gallery that was found.
         """
 
@@ -91,12 +97,13 @@ class Client:
 
         Parameters
         -----------
-        args: `Iterable[:class:`str`]`
+        args: Iterable[:class:`str`]
             The IDs to use when fetching.
 
         Returns
         --------
-        AsyncIterator[:class:`~nhentaio.Gallery`]
+        AsyncIterator[:class:`~.Gallery`]
+            An asynchronous iterator yielding the galleries that were found.
         """
 
         return CoroIterator([self.fetch_gallery(id) for id in args])

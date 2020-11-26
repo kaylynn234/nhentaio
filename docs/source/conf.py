@@ -12,7 +12,8 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../nhentaio/'))
+sys.path.insert(0, os.path.abspath('../../'))
+sys.path.append(os.path.abspath('extensions'))
 
 
 # -- Project information -----------------------------------------------------
@@ -31,7 +32,11 @@ release = '0.1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc'
+    'builder',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'sphinxcontrib_trio',
+    'details',  
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -54,3 +59,11 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+pygments_style = 'friendly'
+
+autodoc_member_order = 'bysource'
+
+master_doc = 'index'
+
+napoleon_google_docstring = False
