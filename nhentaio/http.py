@@ -101,8 +101,13 @@ class HTTPClient:
         pages = [GalleryPage.from_id_and_count(image_id, i, self) for i in range(1, tags.pages + 1)]
         similar = [self.parse_partial_gallery(tree, '//*[@id="related-container"]', position=i) for i in range(6)]
 
-        title = " ".join(element.text for element in tree.xpath(f"{TITLE_PREFIX}/h1")[0]).strip(" ")
-        title_untranslated = " ".join(element.text for element in tree.xpath(f"{TITLE_PREFIX}/h2")[0]).strip(" ")
+        # Element.text may be None, so filtering it (in some way) is required.
+        raw_title = filter(None, (element.text for element in tree.xpath(f"{TITLE_PREFIX}/h1")[0]))
+        raw_title_untranslated = filter(None, (element.text for element in tree.xpath(f"{TITLE_PREFIX}/h2")[0]))
+
+        # There may be extraneous spaces at either end of the string.
+        title = "".join(raw_title).strip(" ")
+        title_untranslated = "".join(raw_title_untranslated).strip(" ")
 
         return Gallery(
             id=id,

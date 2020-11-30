@@ -13,7 +13,7 @@ __title__ = "nhentaio"
 __author__ = "Kaylynn"
 __license__ = "MIT"
 __copyright__ = "Copyright 2020 Kaylynn"
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 from .client import Client
 from .enums import SortType
