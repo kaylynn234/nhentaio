@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nhentaio"
-version = "0.2.1"
+version = "0.3.0"
 description = "An asynchronous python library for interacting with nhentai."
 authors = ["Kaylynn <mkaylynn7@gmail.com>"]
 

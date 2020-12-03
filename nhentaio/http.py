@@ -103,16 +103,21 @@ class HTTPClient:
 
         # Element.text may be None, so filtering it (in some way) is required.
         raw_title = filter(None, (element.text for element in tree.xpath(f"{TITLE_PREFIX}/h1")[0]))
-        raw_title_untranslated = filter(None, (element.text for element in tree.xpath(f"{TITLE_PREFIX}/h2")[0]))
-
         # There may be extraneous spaces at either end of the string.
         title = "".join(raw_title).strip(" ")
-        title_untranslated = "".join(raw_title_untranslated).strip(" ")
+
+        # There may not be a subtitle - see gallery 177013 for details. No, I was not the one who found this issue.
+        # https://github.com/kaylynn234/nhentaio/issues/1
+        try:
+            raw_subtitle = filter(None, (element.text for element in tree.xpath(f"{TITLE_PREFIX}/h2")[0]))
+            subtitle = "".join(raw_subtitle).strip(" ")  # See comment about extraneous spaces above.
+        except IndexError:  # No elements in xpath
+            subtitle = None
 
         return Gallery(
             id=id,
             title=title,
-            title_untranslated=title_untranslated,
+            subtitle=subtitle,
             cover=Asset(f"https://t.nhentai.net/galleries/{image_id}/cover.jpg", self),
             page_count=tags.pages,
             uploaded=tags.date,

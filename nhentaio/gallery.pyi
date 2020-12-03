@@ -29,7 +29,7 @@ class GalleryPage:
 class Gallery:
     id: int
     title: str
-    title_untranslated: str
+    subtitle: str
     cover: Asset
     page_count: int
     uploaded: datetime.datetime

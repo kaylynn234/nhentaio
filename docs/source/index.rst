@@ -12,6 +12,7 @@ Nhentaio is an asynchronous, read-only nhentai API wrapper for the damned, depra
 .. toctree::
    :maxdepth: 4
 
+   changelog
    reference
 
 

@@ -75,8 +75,9 @@ class Gallery:
         The ID of this gallery.
     title: :class:`str`
         The title of this gallery.
-    title_untranslated: :class:`str`
-        The title of this gallery without localisation.
+    subtitle: Optional[:class:`str`]
+        The secondary title (or subtitle) of this gallery.
+        If a primary title is present, this is usually the untranslated title. Note that this may be ``None``.
     cover: :class:`~.Asset`
         An asset representing this gallery's cover. This is usually the same as the gallery's first page.
     url: :class:`str`
@@ -107,11 +108,13 @@ class Gallery:
         A list of the language tags attached to this gallery.
     categories: List[:class:`~.Taglike`]
         A list of the category tags attached to this gallery.
+    title_untranslated: Optional[:class:`str`]
+        An alias of :attr:`~.Gallery.subtitle` that exists for backwards compatibility. Pending removal.
     """
 
     id: int
     title: str
-    title_untranslated: str
+    subtitle: str
     cover: Asset
     page_count: int
     uploaded: datetime.datetime
