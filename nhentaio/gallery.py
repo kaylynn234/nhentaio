@@ -88,8 +88,6 @@ class Gallery:
         A UTC+0 datetime representing when this gallery was uploaded.
     favourites: :class:`int`
         The amount of favourites this gallery has received.
-    url: :class:`str`
-        The full URL for this gallery.
     pages: List[:class:`~.GalleryPage`]
         The pages in this gallery.
     similar: List[:class:`~.PartialGallery`]
