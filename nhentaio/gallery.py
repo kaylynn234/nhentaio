@@ -67,6 +67,7 @@ class Gallery:
     """Gallery()
 
     Represents an nhentai gallery.
+    This class is returned from :meth:`~.Client.fetch_gallery` / :meth:`~.Client.fetch_galleries` and should not be instantiated manually.
 
     Attributes
     -----------
